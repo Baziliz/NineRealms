@@ -1,0 +1,96 @@
+﻿@page
+@model NineRealms.Pages.BookingConfirmationModel
+@{
+    Layout = null; // ✅ ปิด Layout ออกไป
+}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ยืนยันการจองรถ</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            background: white;
+        }
+        
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        td:nth-child(2) {
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .driver-photo {
+
+            text-align: center;
+        }
+
+
+        .driver-photo img {
+
+            max-width: 100px;
+            max-height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align:center;">ยืนยันการจองรถ</h2>
+
+    <p>เรียน ผู้ใช้รถส่วนกลางของบริษัทฯ</p>
+    <p>แจ้งยืนยันการจองรถส่วนกลางตามรายละเอียดด้านล่าง</p>
+
+    <div class="container">
+        <!-- ตารางข้อมูลการจอง -->
+        <table>
+            <tr><th>วันที่</th><td>@Model.Transaction.BDate.ToString("dd/MM/yyyy")</td></tr>
+            <tr><th>เวลาออก</th><td>@Model.Transaction.BArrivalTime</td></tr>
+            <tr><th>สถานที่ไป</th><td>@Model.Transaction.BDestination</td></tr>
+            <tr><th>ชื่อพขร.</th><td>@Model.Driver.BName</td></tr>
+            <tr><th>เบอร์โทรศัพท์</th><td>@Model.Driver.BMobile</td></tr>
+            <tr><th>ทะเบียนรถ</th><td>@Model.Transaction.BRegister</td></tr>
+            <tr><th>รุ่นรถยนต์</th><td>@Model.Car.BCarModel</td></tr>
+
+        </table>
+
+        <!-- รูปคนขับ -->
+        <div class="driver-photo">
+            <img src="/images/20100827-120214.JPG" alt="Driver Photo">
+        </div>
+    </div>
+
+    <p style="text-align:center; color:red; font-weight:bold;">** หมายเหตุ **</p>
+    <p>- ระบบการจองรถปิดรับเวลา 15:00 น.</p>
+    <p>- เจ้าหน้าที่จะยืนยันการจองก่อนเวลา 17:00 น. ก่อนวันเดินทาง 1 วัน</p>
+    <p>- กรณีจองรถด่วน กรุณาติดต่อเจ้าหน้าที่</p>
+
+</body>
+</html>
